@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    //参数扩展
+    // function show(a,b,...arguments){
+    //   alert(a);
+    //   alert(b);
+    //   alert(arguments);
+    // }
+    // show(10,12,25,23,1);
+
+
+    //展开一个数组
+    // let arr =[1,2,3]
+    // //...arr等价于 1,2,3
+    // function show(a,b,c){
+    //   alert(a);
+    //   alert(b);
+    //   alert(c);
+    // }
+    // show(...arr);
+
+    // let arr1=[1,2,3];
+    // let arr2=[6,7,8];
+    // let arr=[...arr1,...arr2];
+    // alert(arr);
+
+    // let a;
+    // a=1,2,3;
+    // alert(a);//输出1
+
+
+    function show(...args){//用于收集参数
+      //用于展开参数
+      fn(...args);
+    }
+
+    function fn(a,b){
+      alert(a+b);
+    }
+    show(2,5);
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

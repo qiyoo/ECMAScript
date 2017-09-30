@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    //普通函数写法：
+    //  window.onload= function(){
+    //      alert(1)
+    // };
+    //箭头函数写法：将function变成一个箭头
+    /* window.onload=()=>{
+       alert(1)
+     }
+
+
+    //普通函数写法：
+    let show = function(){
+      alert('普通a');
+    }
+    show();
+    //箭头函数写法
+    let showArrow = ()=>{
+      alert('箭头a');
+    }
+    showArrow();
+
+
+
+    //普通函数传参数：
+    let colmun = function(a,b){
+      alert(a+b);
+    }
+    colmun(12,1);
+    //箭头函数传参数：
+    let colmunArrow = (a,b)=>{
+      alert(a+b);
+    }
+    colmunArrow(12,10);
+
+
+   //数组
+   let arr=[1,22,13,4,25];
+   arr.sort(function(n1,n2){
+      return n1-n2;
+   });
+   alert(arr);
+  //箭头函数使用在数组中
+   let arrArrow=[1,22,13,4,25];
+   arrArrow.sort((n1,n2)=>{
+      return n1-n2;
+   });
+   alert(arrArrow);
+
+
+
+   //如果只有一个参数,()可以省略 和下面的函数效果一样
+   let Parentheses = (a)=>{
+     return a*2;
+   }
+   alert(Parentheses(4));
+
+   //如果只有一个参数,()可以省略
+   let ignoreParentheses = a=>{
+     return a*2;
+   }
+   alert(ignoreParentheses(6));
+
+
+  //如果只有一个return ,{}可以省略 和下面的函数效果一样
+  let brackets = (a)=>{
+     return a*2;
+   }
+   alert(brackets(24));*/
+
+   //如果只有一个return,{}和return可以省略
+   let ignoreBrackets = a=>a*2;
+   alert(ignoreBrackets(23));
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

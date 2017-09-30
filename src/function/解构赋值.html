@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    //普通的拆解参数
+    // let arr = [1,2,3];
+    // let a = arr[0];
+    // let b = arr[1];
+    // let c = arr[2];
+    // alert(a,b,c);
+
+    //解构赋值:左右必须一致，数组和json都可以使用解构赋值
+    // let [a,b,c] = [1,2,3];
+
+    // let {f,g,h} = {f:23,g:6,h:65};
+
+    // let [{a,b},[n1,n2,n3],num,str]=[{a:2,b:3},[12,34,56],3,"sdfsdf"];
+    // console.log(a,b,n1,n2,n3,num,str);//输出2 3 12 34 56 3 "sdfsdf"
+  
+
+    //也可以获取整个json或者数组
+    let [json,[n1,n2,n3],num,str]=[{a:2,b:3},[12,34,56],3,"sdfsdf"];
+    console.log(json,n1,n2,n3,num,str);//Object {a: 2, b: 3} 12 34 56 3 "sdfsdf"
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
