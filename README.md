@@ -1,4 +1,4 @@
-# ECMAScript
+# ECMAScript [ http://es6.ruanyifeng.com](http://es6.ruanyifeng.com "es6中文教程")
 
 ##1、编译
 ###1.1在线编译--不推荐
@@ -74,7 +74,7 @@ babel == browser.js:作用是使浏览器支持babel，可以使用ES6进行写j
 - #### 标准函数写法   
  1. 语法：function 函数名(){}
 - #### ES6中的箭头函数
-  1. 语法：()=>{}
+  1. 语法：()=>{}  等价于 function(){}
   2. 如果只有一个参数，()可以省略
        `let Parentheses = (a)=>{
     		 return a*2;
@@ -160,10 +160,273 @@ babel == browser.js:作用是使浏览器支持babel，可以使用ES6进行写j
 	4. 声明和赋值不能分开
 	 不能先声明，再去赋值， let [a,b]; [a,b]=[12,4];报错
 	5. 
-- 阿斯蒂芬
+- 待续。。。
 ###2.3 数组
+- 数组的新方法
+	1. map--映射：一个对一个，可以给原数组做转换
+	`map(function(elements,index){})`//第一个参数是元素，第二个参数是元素的下标
+	2. reduce--汇总 一堆数据汇总成一个，相当于计算数组的参数的总和
+ 计算总和：	 
+//tmp:(每次reduce时，前面数据累加的结果)最终返回的是所有数据的和，item是数组的元素，index数组元素的下标,
+   `let result = arr.reduce((tmp,item,index)=> tmp+item )`
+
+        计算平均数：求和之后/数组的长度
+	3. filter--过滤器
+		过滤器：`let arr1 =[
+		   {title:"男士衬衫",price:75},
+		   {title:"女式包",price:1375},
+		   {title:"女鞋",price:575},
+		   {title:"男鞋",price:475}];`
+
+ 			`let result1=arr1.filter(json=>json.price>=1000);`
+	4. forEach--循环
+	   遍历数组：`let arr= [12,56,23];arr.forEach((item,index)=>{alert(item);})`
+
 ###2.4 字符串
+- 多了两个新方法
+  1. startsWidth:以什么开头，返回的是Boolean值，可以用来判断字符串是以什么开口的。实际应用：判断一个网址的类型，http/https/git.svn等
+    `let str = "fasdfasdfsad";
+    let result = str.startsWith("f"); =>true`  
+     
+    `let str = "htttp://www.baidu.com";
+    if(str.startsWith("http://")){
+      alert("普通网址");
+    }else if(str.startsWith("https://")){
+      alert("加密网址");
+    }else if(str.startsWith("git://")){
+      alert("git");
+    }else if(str.startsWith("svn://")){
+      alert("svn");
+    }else{
+      alert("其他");
+    }`
+  2. endsWIdth：以什么结尾,返回的是Boolean值，可以用来判断字符串是以什么结尾的。实际应用：可以判断邮箱的类型或者上传附件的时候，根据判断上传附件的类型或者附件的类型显示对应的图标
+   ` let str = "fasdfasdfsad";
+     let resultEnd = str.endsWith("d"); =>true`
+
+     `let str = "身份证.jpg";
+    if(str.endsWith(".jpg")){
+      alert("jpg图片");
+    }else if(str.endsWith(".txt")){
+      alert("txt文件");
+    }else if(str.endsWith(".png")){
+      alert("png图片");
+    }else{
+      alert("其他");
+    }`
+- 字符串模板  
+   1. 字符串模板，可以解析${变量}格式中的变量值。在js中，单引号和双引号的括起来的字符没有区别，二字符串模板就是用反单引号括起来的字符串``（切换成英文输入法，按1左边的键既可以敲出）。
+	`let a = "234";
+    let b =`${a}`;
+    console.log(b);=>234 `
+
+    `let c ='${a}';
+    console.log(c);=>${a}`
+
+   2. 可以用来拼接字符串，随意折行。和常规的字符串拼接相比，可以随意换行和拼接
+    let title="简介";
+    let content="你好，我是某某...";
+    //传统字符串拼接，换行的时候要加反斜杠
+    let str ='<div>\
+	<h1>'+title+'</h1>\
+	<p>'+content+'</p>\
+	</div>';
+    alert("str="+str);
+
+
+   //模板字符串
+    let strTemp = `<div><h1>${title}</h1><p>${content}</p></div>`
+    alert("strTemp="+strTemp);
+   
+- 水电费
 ###2.5 面向对象
-###2.6 promise
-###2.7 generator
-###2.8 模块化
+- 原来的面向对象，定义一个抽象的函数，包含一类东西的属性或者方法，也可以通过原型属性给对象添加方法。
+- 原来的面向对象存在的缺陷：   
+   1. 类也是构造函数
+   2.
+   `  function user(name,age){
+        this.name = name;
+        this.age = age;
+      }
+      user.prototype.showName = function(){
+        alert(this.name);
+      }
+      user.prototype.showAge = function(){
+        alert(this.age);
+      }
+
+      var u1 = new user("张三","23");
+      u1.showName();
+      u1.showAge();`
+- 原来的面向对象 继承：站在巨人的肩膀上实现自己的目的：实现继承的方法：call、apply
+    `function user(name,age){
+        this.name = name;
+        this.age = age;
+      }
+      user.prototype.showName = function(){
+        alert(this.name);
+      }
+      user.prototype.showAge = function(){
+        alert(this.age);
+      }
+
+      function vipUser(name,age,level){
+        user.call(this,name,age);
+        this.level =level;
+      }
+
+      var u1 = new user("张三","23");
+      u1.showName();
+      u1.showAge();`
+  
+- 新的面向对象 多了关键字 class class{方法} ；有了专门的构造器
+    //方法:每个方法之间不用加分号和function
+
+   `class user{
+         constructor(name,age){
+           this.name = name ;
+           this.age = age;
+         }
+         showName(){
+           alert(this.name);
+         }
+         showAge(){
+           alert(this.age);
+         }
+       }
+      var u1 = new user("张三","23");
+
+      u1.showName();
+
+      u1.showAge();`
+- 面向对象德 继承 ：继承别人的功能，在别人功能的基础上进行扩展自己的功能
+     1.原来的继承方法 
+     `function user(name,age){
+        this.name = name;
+        this.age = age;
+      }
+      user.prototype.showName = function(){
+        alert(this.name);
+      }
+      user.prototype.showAge = function(){
+        alert(this.age);
+      }
+
+      function vipUser(name,age,level){
+        user.call(this,name,age);
+        this.level =level;
+      }
+
+      //继承的方法
+      vipUser.prototype = new user();
+      vipUser.prototype.constructor = vipUser;
+
+      var v1 = new vipUser("blue","123456",'1');
+
+      v1.showName();
+      v1.showAge();`
+    
+      2.super():父类、超类，执行父类的方法
+     
+    ` class user{
+      constructor(name,age){
+        this.name = name ;
+        this.age = age;
+      }
+      showName(){
+        alert(this.name);
+      }
+      showAge(){
+        alert(this.age);
+      }
+    }
+    //es6 继承新方法
+    class vipUser extends user{
+      constructor(name,age,level){
+        super(name,age);
+        this.level = level;
+      }
+      showLevel(){
+        alert(this.level);
+      }
+    }
+   var v1 = new vipUser("张三","23",'1');
+   v1.showName();
+   v1.showAge();
+   v1.showLevel();`
+
+ 
+- 面向对应的应用 React
+  - 1.React:组件化，一个组件就是一个class，依赖于JSX == babel == browser.js
+  
+###2.6 JSON
+- 1.json 标准语法 数值是key:value的模式，key和value只能用双引号括起来;数据有逗号隔开，可以是json对象或者json数组，
+
+json对象
+    `let jsonObj={"a":"4","b":"5"};`
+
+josn数组：由json对象构成的数组格式：[{},{},{}]
+`let jsonArr = [{"a":"4","b":"5"},{"a":"4","b":"5"}，{"a":"4","b":"5"}]`
+访问jsonArr   jsonArr[0].a
+let json={"sites":[{"d":"5"},{"c":"4"},{}]}
+
+- 2.将JSON转为字符串 stringify JSON.stringify(json对象)
+   stringify:字符串化 的意思
+
+    `let json = {"a":"3","b":"5"};
+    let josnStr =JSON.stringify(json);
+    console.log(josnStr);//输出的是字符串{"a":"3","b":"5"}`
+- 3.将str字符串转为json parse ，JSON.parrse(str)
+
+     `let str='{"a":"3","b":"5"}';
+      let strJson = JSON.parse(str);
+     console.log(strJson); `
+   //输出的是对象	
+    Object {a: "3", b: "5"}
+	a:"3"
+	b:"5"
+- 4.json的简写
+   - 1.当值和变量名一样时，可以只写一个
+  `let a =12;
+  let b=2;
+  let jsonOrgin ={a:a,b:b};
+  console.log(jsonOrgin);//原始写法
+  let jsonES6 = {a,b,"c":89};//es6新写法
+  console.log(jsonES6);`
+    - 2.json中有函数，可以省略 ":function"
+   ` let jsonFunction ={
+		  a:12,
+		  show(){//可以省略:function
+		    alert(this.a);
+		  }
+		}   
+   jsonFunction.show()`
+###2.7 promise
+- 1.promise:承诺  消除异步操作，用同步一样的方式，来书写异步代码
+
+- 2.promise.all([p1,p2]).then(function(arr){alert("必须全部成功")；let[arr1,arr2] = arr },function(){alert("至少有一个失败了");})//all可以接收多个promise对象，如果需要分解两个promise对象的反馈结果，arr1对应的是第一个promise对象，arr2对应的是第二个promise对象
+- 3.可以将多个promise函数封装在一个函数里面，url传参就行，ajax函数其实就是个json对象
+- 4.高版本的jquery支持promise ajax的返回值是个promise对象
+let p = $.ajax({});p 是个promise对象 ，所以ajax本身返回的就是promise对象，不用再new Promise()了
+- Promise()all方法：promise对象中的ajax都是与的关系，必须都成功，then的结果才会成功，有一个失败，就全部失败了
+   `Promise.all({$.ajax({}),$.ajax({}),$.ajax({})}).then(results=>{
+    let [ajax1,ajax2,ajax3] =results;
+	alert("成功了")
+},err=>{
+alert("失败了");    
+})`
+- Promise的race方法
+###2.8 generator：是一个函数。
+- 1. generator功能：可以在函数执行的过程中停止，使用的关键词是yield（放弃），函数名字前有*号，来区别普通函数（一旦执行，整个函数都会执行完整）；
+- 2.执行generator函数的时候，不会直接运行函数中的代码，而是创建了generator对象。generatorObj对象有个next方法,继续执行，会执行函数中的内容。如果想执行yield后面的内容，继续使用next()的方法即可。
+- 3.为什么需要函数中有停止需求：请求数据,因为可以暂停，可以不用在ajax的回调函数中处理数据。
+   function *函数(){
+		代码。。。
+        yield ajax(xxx,function(){})
+        代码。。。
+   }
+- 4.带逻辑的读取 promise generator
+  - 1.promise 和普通回调相比没有优势
+  - 2.generator ：不能写成箭头函数，带逻辑用起来比较方便
+- 待续
+###2.9 模块化

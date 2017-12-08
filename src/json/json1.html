@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    //stringify 将json转为字符串
+    let json = {"a":"3","b":"5"};
+
+    let josnStr =JSON.stringify(json);
+
+    console.log(josnStr);//输出的是字符串
+
+  //parse 将字符串转为json
+    let str='{"a":"3","b":"5"}';
+
+    let strJson = JSON.parse(str);
+     
+    console.log(strJson); //输出的是对象
+
+  //json简写
+  let a =12;
+  let b=2;
+  let jsonOrgin ={a:a,b:b};
+  console.log(jsonOrgin);
+  
+  let jsonES6 = {a,b,"c":"89"};
+  console.log(jsonES6);
+
+  let jsonFunction ={
+  a:12,
+  show(){//可以省略:function
+    alert(this.a);
+  }
+}
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+      function user(name,age){
+        this.name = name;
+        this.age = age;
+      }
+      user.prototype.showName = function(){
+        alert(this.name);
+      }
+      user.prototype.showAge = function(){
+        alert(this.age);
+      }
+
+      function vipUser(name,age,level){
+        user.call(this,name,age);
+        this.level =level;
+      }
+
+      //继承的方法
+      vipUser.prototype = new user();
+      vipUser.prototype.constructor = vipUser;
+
+      var v1 = new vipUser("blue","123456",'1');
+
+      v1.showName();
+      v1.showAge();
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

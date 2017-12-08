@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    //map
+    let arr = [12,5,8];
+    //如果不返回值，则arrResult为空
+    let arrMap = arr.map((item,index)=>{
+      return item*2;
+    });
+    //如果只有一个参数，小括号可以省略
+    let arrMap = arr.map(item=>{
+      return item*2;
+    });
+    //如果只有一个return，{}和return也可以省略
+    let arrMap = arr.map(item=>item*2);
+    console.log(arrMap);
+
+    let score=[13,45,85,65,95];
+    score.map(item=>item>=60?'及格':'不及格');
+    alert(score);
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    //reduce
+  let arr=[45,12,52,36,85];
+   //tmp:(每次reduce时，前面数据累加的结果)最终返回的是所有数据的和，item是数组的元素，index数组元素的下标,
+   /* let result = arr.reduce(function(tmp,item,index){
+     return  tmp+item 
+   })
+   alert(result);*/
+
+   //求平均数  function(){} 和箭头函数的区别，this，如果是箭头函数，this指向的是当前对象；如果是function函数，this指向的window
+   let result = arr.reduce((tmp,item,index)=>{
+      if(index != arr.length-1){//累加到不是最后一个数据
+        return  tmp+item; 
+      }else{
+        return  (tmp+item)/(arr.length);
+     }
+   })
+
+   alert(result);
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    class user{
+      constructor(name,age){
+        this.name = name ;
+        this.age = age;
+      }
+      showName(){
+        alert(this.name);
+      }
+      showAge(){
+        alert(this.age);
+      }
+    }
+    //es6 继承新方法
+    class vipUser extends user{
+      constructor(name,age,level){
+        super(name,age);
+        this.level = level;
+      }
+      showLevel(){
+        alert(this.level);
+      }
+    }
+   var v1 = new vipUser("张三","23",'1');
+   v1.showName();
+   v1.showAge();
+   v1.showLevel();
+</script>
+</head>
+<body>
+  
+</body>
+</html>

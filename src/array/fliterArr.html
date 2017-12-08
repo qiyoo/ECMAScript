@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>fliter</title>
+  <script>
+ 
+      let arr = [45,52,59,64,35,61,78];
+      let result = arr.filter(item=>{
+        /*if(item%2 == 0){
+          return true;
+        }else{
+          return false;
+        }*/
+        //等价于
+        return item%2==0
+      })
+      alert(result);
+
+     let arr1 =[
+       {title:"男士衬衫",price:75},
+       {title:"女式包",price:1375},
+       {title:"女鞋",price:575},
+       {title:"男鞋",price:475}
+     ];
+
+     let result1=arr1.filter(json=>json.price>=1000);
+
+     alert(result1);
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

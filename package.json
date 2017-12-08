@@ -1,0 +1,23 @@
+{
+  "name": "ecmascript",
+  "version": "1.0.0",
+  "description": "babel == browser.js:作用是使浏览器支持babel，可以使用ES6进行写js代码。browser.js会对使用ES6语法写的js代码进行编译，使ie10一下的浏览器可以使用。如果使用ES5，可以不引入brower.js文件。script标签的type=\"text/babel\"\r ##2、ES6的内容：\r ###2.1 变量：let定义的是变量   const定义的是常量",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qiyoo/ECMAScript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qiyoo/ECMAScript/issues"
+  },
+  "homepage": "https://github.com/qiyoo/ECMAScript#readme",
+  "dependencies": {
+    "koa": "^2.4.1",
+    "koa-mysql": "^1.0.3"
+  }
+}

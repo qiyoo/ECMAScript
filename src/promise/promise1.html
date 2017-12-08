@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    let p = new Promise(function(resolve,reject){
+      //异步代码
+      //resolve-成功了
+      //reject -失败了
+      $.ajax({
+        url:"data",
+        dataType:"json",
+        success(arr){
+          resolve(arr);//请求成功的时候执行的函数
+        },
+        error(err){
+          reject(err);//请求成功的时候执行的函数
+        }
+      })
+    })
+    //执行完p，然后要掉调用promise的then方法，then的第一个函数对应的是resolve方法（成功），第二个函数对应的是reject方法（失败）
+    p.then(function(arr){
+      alert("成功了！"+arr);
+    },function(err){
+      alert("失败了！"+err);
+    })
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

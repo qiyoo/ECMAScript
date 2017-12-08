@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    //普通函数一个函数一旦运行，就会执行完毕
+    function show(){
+      alert('a');
+
+      alert('b');
+    }
+    
+    //generator函数，函数名前使用*号，这个函数在执行的过程中，中间可以停止，停止是由yield(放弃)控制的。
+    function *show(){
+      alert('*a');
+      yield;
+      alert('*b');
+    }
+   let generatorObj =  show();
+   console.log(generatorObj);
+   //generatorObj对象有个next方法,继续执行
+   generatorObj.next();
+   //如果想要b弹出来，继续next()
+   generatorObj.next();
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
